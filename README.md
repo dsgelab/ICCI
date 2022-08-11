@@ -19,11 +19,11 @@
 
 ## Installation
 
-You can install the development version of IUtils from [GitHub](https://github.com/) with:
+You can install the development version of ICCI from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("")
+devtools::install_github("dsgelab/ICCI")
 ```
 
 In FinnGen you can find the package at `/finngen/green/kira/pckg_share/`. Or alternatively, compress the package and upload it through green uploads.
