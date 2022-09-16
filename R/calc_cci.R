@@ -47,7 +47,7 @@ calc_cci <- function(icd_data,
             curnt_cci_scores <- calc_icd_ver_spec_ccis(curnt_icd_data, 
                                                     icd_version)
             all_cci_scores <- dplyr::bind_rows(all_cci_scores, 
-                                            curnt_cci_scores)
+                                               curnt_cci_scores)
         }
         # Adds up the scores from the same individual with different ICD-version
         # entries.
@@ -56,8 +56,8 @@ calc_cci <- function(icd_data,
                                             process_icd_data) 
         full_scores <- add_back_missing_indvs(icd_data, total_cci_scores)
     } else {
-        full_scores <- tibble::add_column(icd_data, CCI_score=rep(0, nrow(icd_data)))
+        full_scores <- tibble::add_column(icd_data, SCORE=rep(0, nrow(icd_data)))
     }
-
-    return(dplyr::select(full_scores, ID, CCI_score))
+    full_scores <- dplyr::rename(full_scores, CCI=SCORE)
+    return(dplyr::select(full_scores, ID, CCI))
 }

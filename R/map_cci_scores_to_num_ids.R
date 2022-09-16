@@ -19,6 +19,6 @@ map_cci_scores_to_num_ids <- function(cci_scores,
                                       IDs_num) {
     IDs_sorted <- sort(unique(IDs_num))
     cci_scores_tib <- tibble::tibble(ID_num=IDs_sorted,
-                                     CCI_score=cci_scores)
+                                     SCORE=cci_scores)
     return(cci_scores_tib)
 }

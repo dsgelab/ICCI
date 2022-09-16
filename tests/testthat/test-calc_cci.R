@@ -21,11 +21,11 @@ test_that("calc_cci works", {
                                   ICD_version = "9")
   cci_scores <- calc_cci(sample_data)
   # First patient has CPD and nothing else -> score of 1
-  expect_equal(dplyr::filter(cci_scores, ID == "KT0000001")$CCI_score, 1)
+  expect_equal(dplyr::filter(cci_scores, ID == "KT0000001")$CCI, 1)
 
   # Second patient has two cancer records, 
   # peptic ulcers (pud), and hemiplegia (hp) -> score of 7
-  expect_equal(dplyr::filter(cci_scores, ID == "KT0000002")$CCI_score, 7)
+  expect_equal(dplyr::filter(cci_scores, ID == "KT0000002")$CCI, 7)
 })
 
 test_that("calc_cci with exposure window", {
@@ -43,10 +43,10 @@ test_that("calc_cci with exposure window", {
 
   cci_scores <- calc_cci(sample_data, exp_start = 20, exp_end = 60)
   # First patient has CPD and nothing else -> score of 1
-  expect_equal(dplyr::filter(cci_scores, ID == "KT0000001")$CCI_score, 1)
+  expect_equal(dplyr::filter(cci_scores, ID == "KT0000001")$CCI, 1)
 
   # Second patient has hemiplegia (2) + ulcer (1) --> score of 3
-  expect_equal(dplyr::filter(cci_scores, ID == "KT0000002")$CCI_score, 3)
+  expect_equal(dplyr::filter(cci_scores, ID == "KT0000002")$CCI, 3)
 })
 
 test_that("calc_cci missing indvs zero works", {
@@ -55,5 +55,5 @@ test_that("calc_cci missing indvs zero works", {
   sample_data <- tibble::add_row(sample_data, ID="KT000001", Event_age=5, primary_ICD="XZY", ICD_version="10")
 
   cci_scores <- calc_cci(sample_data, exp_start = 6)
-  expect_equal(dplyr::filter(cci_scores, ID=="KT000001")$CCI_score, 0)
+  expect_equal(dplyr::filter(cci_scores, ID=="KT000001")$CCI, 0)
 })

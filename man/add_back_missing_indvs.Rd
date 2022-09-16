@@ -4,14 +4,13 @@
 \alias{add_back_missing_indvs}
 \title{Adds individuals without scores, setting their CCI to 0}
 \usage{
-add_back_missing_indvs(icd_data, total_cci_scores)
+add_back_missing_indvs(icd_data, score_data)
 }
 \arguments{
 \item{icd_data}{A data.frame with at least columns \code{ID}, the original
 data.}
 
-\item{total_cci_scores}{A data.frame with at least columsn \code{ID}, and
-\code{CCI_score}.}
+\item{score_data}{A data.frame with at least columsn \code{ID}, and \code{SCORE}.}
 }
 \value{
 A data.frame with all individuals

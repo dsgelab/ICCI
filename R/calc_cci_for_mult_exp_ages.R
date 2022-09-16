@@ -21,7 +21,7 @@ calc_cci_for_mult_exp_ages <- function(icd_data,
       score_age_data[[as.character(exp_age)]] <- ICCI::calc_cci(icd_data, 
                                                    exp_start=exp_age, 
                                                    exp_end=exp_age+exp_len) %>% 
-                        dplyr::rename(SCORE=CCI_score)
+                        dplyr::rename(CCI=SCORE)
    }
 
    return(score_age_data)

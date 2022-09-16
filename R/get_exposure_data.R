@@ -54,12 +54,12 @@ get_exposure_data <- function(long_data,
         } else {
             long_data <- dplyr::inner_join(exp_start, long_data, by="ID")
         }
-
         long_data <- dplyr::filter(long_data, 
                                     Event_age >= EXP_START & 
                                     Event_age <= EXP_END) %>%
                      dplyr::select(-EXP_END, -EXP_START)
         
     }
+
     return(long_data)               
 }

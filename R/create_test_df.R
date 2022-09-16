@@ -84,3 +84,19 @@ create_test_df_multi_icd_ver <- function(n_icd10=50,
     samples <- dplyr::bind_rows(samples_icd10, samples_icd9) %>%
                 tibble::add_column(ICD_version = icd_versions)
 }
+
+create_test_atc_data <- function(indv_ids,
+                                n_samples) {
+    set.seed(1271)
+    zero_weight_atcs <- c("BAHDA91", "JASHFA01", "KAJSDFH2", "AHSGF912", "HSJAS012", "HASGF81S")
+    weight_atcs <- c("JKLAKF76", "LAKSHD512", "GASHD8123", "NGAS81HJ", "LAKS8D5A", "JAHS91JS", "HAGST1ZT", "PAJS67T", "SFD91GS", "PLO912JS")
+    atcs <- c(zero_weight_atcs, weight_atcs)
+
+    id_samples <- sample(indv_ids, n_samples, replace=TRUE)
+    atc_samples <- sample(atcs, n_samples, replace = TRUE)
+    age_samples <- round(stats::runif(n_samples, min = 0, max = 100), 1)
+
+    return(tibble::tibble(ID=id_samples,
+                  Event_age=age_samples,
+                  ATC=atc_samples))
+}
