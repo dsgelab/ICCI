@@ -10,18 +10,17 @@
 #' 
 #' @param long_data A data.frame with at least columns `ID`, and 
 #'                  `PRIMARY_ICD`.
-#' @param exp_start A numeric. Start of the exposure period. Can be 
-#'                  used to restrict the timeframe on which the index 
-#'                  should be calculated. In this case the data.frame
-#'                  needs column `Event_age`. 
-#'                  In case it is a vector has to have the length of
-#'                  the number of rows in `long_data`.
-#' @param exp_end A numeric. End of the exposure period.
-#'                  Can be used to restrict the timeframe on which the index 
-#'                  should be calculated. In this case the data.frame
-#'                  needs column `Event_age`.
-#'                  In case it is a vector has to have the length of
-#'                  the number of rows in `long_data`.
+#' @param exp_start A numeric, or a data.frame with at least columns
+#'                  `ID`, and `EXP_START`.
+#'                  Start of the exposure period. Can be used to restrict 
+#'                  the timeframe on which the index should be calculated. 
+#'                  In this case the `icd_data` data.frame needs column 
+#'                  `Event_age`. 
+#'                  If the numeric is a vector has to have the length of
+#'                  the number of rows in `icd_data`.
+#' @param exp_end A numeric, or a data.frame with at least columns
+#'                  `ID`, and `EXP_END`.
+#'                  End of the exposure period. See `exp_start` docu.
 #' 
 #' @export
 #' 
@@ -58,7 +57,6 @@ get_exposure_data <- function(long_data,
                                     Event_age >= EXP_START & 
                                     Event_age <= EXP_END) %>%
                      dplyr::select(-EXP_END, -EXP_START)
-        
     }
 
     return(long_data)               

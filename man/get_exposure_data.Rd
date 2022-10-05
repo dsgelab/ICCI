@@ -10,19 +10,18 @@ get_exposure_data(long_data, exp_start = NULL, exp_end = NULL)
 \item{long_data}{A data.frame with at least columns \code{ID}, and
 \code{PRIMARY_ICD}.}
 
-\item{exp_start}{A numeric. Start of the exposure period. Can be
-used to restrict the timeframe on which the index
-should be calculated. In this case the data.frame
-needs column \code{Event_age}.
-In case it is a vector has to have the length of
-the number of rows in \code{long_data}.}
+\item{exp_start}{A numeric, or a data.frame with at least columns
+\code{ID}, and \code{EXP_START}.
+Start of the exposure period. Can be used to restrict
+the timeframe on which the index should be calculated.
+In this case the \code{icd_data} data.frame needs column
+\code{Event_age}.
+If the numeric is a vector has to have the length of
+the number of rows in \code{icd_data}.}
 
-\item{exp_end}{A numeric. End of the exposure period.
-Can be used to restrict the timeframe on which the index
-should be calculated. In this case the data.frame
-needs column \code{Event_age}.
-In case it is a vector has to have the length of
-the number of rows in \code{long_data}.}
+\item{exp_end}{A numeric, or a data.frame with at least columns
+\code{ID}, and \code{EXP_END}.
+End of the exposure period. See \code{exp_start} docu.}
 }
 \description{
 Subsets the data.frame to only include the entries from individuals

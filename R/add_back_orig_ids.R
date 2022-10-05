@@ -23,6 +23,6 @@
 add_back_orig_ids <- function(cci_scores, 
                               icd_data) {
     add_map_col(cci_scores,
-                        dplyr::select(icd_data, ID, ID_num),
-                        "ID_num")
+                dplyr::select(icd_data, ID, ID_num),
+                "ID_num")
 }

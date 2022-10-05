@@ -8,6 +8,7 @@
     - If you want to restrict the exposure period to calculate the index on, the data needs an additional column `Event_age`.
 - The package can handle different ICD-versions for the same individual.
     - Possible entries for the column `ICD_version` are "10", "10CM", "9", or "9CM".
+- Can also be used to calculate a medication score for data with ATC codes and associated weights.
 
 ### R package Dependencies
 
@@ -31,7 +32,7 @@ In FinnGen you can find the package at `/finngen/green/kira/pckg_share/`. Or alt
 Then in the Sandbox use i.e.
 
 ```{r example}
-install.packages("finngen/green/kira/pckg_share/ICCI_2.0.0.tar.xz",
+install.packages("finngen/green/kira/pckg_share/ICCI_2.1.0.tar.xz",
                  "/home/ivm/R/x86_64-pc-linux-gnu-library/4.1",
                  repos = NULL, type="source")
 ```

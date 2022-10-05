@@ -85,8 +85,16 @@ create_test_df_multi_icd_ver <- function(n_icd10=50,
                 tibble::add_column(ICD_version = icd_versions)
 }
 
+#' Creates test ATC data
+#' 
+#' @param indv_ids A character. IDs of the individuals.
+#' @param n_samples A numeric. The number of samples to draw.
+#' 
+#' @export 
+#' 
+#' @author Kira E. Detrois
 create_test_atc_data <- function(indv_ids,
-                                n_samples) {
+                                 n_samples) {
     set.seed(1271)
     zero_weight_atcs <- c("BAHDA91", "JASHFA01", "KAJSDFH2", "AHSGF912", "HSJAS012", "HASGF81S")
     weight_atcs <- c("JKLAKF76", "LAKSHD512", "GASHD8123", "NGAS81HJ", "LAKS8D5A", "JAHS91JS", "HAGST1ZT", "PAJS67T", "SFD91GS", "PLO912JS")
@@ -96,7 +104,12 @@ create_test_atc_data <- function(indv_ids,
     atc_samples <- sample(atcs, n_samples, replace = TRUE)
     age_samples <- round(stats::runif(n_samples, min = 0, max = 100), 1)
 
-    return(tibble::tibble(ID=id_samples,
-                  Event_age=age_samples,
-                  ATC=atc_samples))
+    atc_data <- tibble::tibble(ID=id_samples,
+                               Event_age=age_samples,
+                               ATC=atc_samples)
+    weights <- tibble::tibble(ATC=c("JKLAKF76", "LAKSHD512", "GASHD8123", "NGAS81HJ", "LAKS8D5A", 
+                                  "JAHS91JS", "HAGST1ZT", "PAJS67T", "SFD91GS", "PLO912JS"),
+                            WEIGHT=c(rep(1, 7), rep(-1, 3)))
+    atc_data <- dplyr::left_join(atc_data, weights, by="ATC")
+    return(atc_data)
 }

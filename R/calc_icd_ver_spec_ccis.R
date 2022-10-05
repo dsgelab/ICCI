@@ -38,6 +38,11 @@ calc_icd_ver_spec_ccis <- function(icd_data,
     return(cci_scores)
 }
 
+#' Tests that there is only one ICD-version in the current data
+#' 
+#' @inheritParams calc_icd_ver_spec_ccis
+#' 
+#' @author Kira E. Detrois
 test_icd_ver_correct <- function(icd_data) {
     n_icd_versions <- length(unique(icd_data$ICD_version)) 
     assertthat::assert_that(n_icd_versions == 1)            

@@ -28,6 +28,6 @@ add_map_col <- function(long_data,
                      # Makes sure not to add multiple rows
                      # just because there's the same
                      # entry in the map multiple times.
-                     dplyr::distinct(map_tib, .keep_all = TRUE),
+                     dplyr::distinct(map_tib, .keep_all=TRUE),
                      by = {{common_col}})
 } 

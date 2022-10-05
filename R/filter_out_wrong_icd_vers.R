@@ -7,6 +7,8 @@
 #' @return The data without rows with ICD-version entries other than "9", "9CM",
 #'          "10", or "10CM".
 #' 
+#' @export 
+#' 
 #' @author Kira E. Detrois
 filter_out_wrong_icd_vers <- function(icd_data) {
     if(any(!(icd_data$ICD_version %in% c("9", "10")))) {

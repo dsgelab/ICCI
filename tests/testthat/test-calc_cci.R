@@ -1,6 +1,5 @@
 
 test_that("calc_cci with integer icd_version doesn't throw error", {
-  library(IUtils)
   set.seed(82312)
   sample_data <- create_test_df_multi_icd_ver() 
   sample_data$ICD_version <- as.integer(sample_data$ICD_version)

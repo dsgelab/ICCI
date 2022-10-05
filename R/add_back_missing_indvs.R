@@ -1,10 +1,10 @@
 #' Adds individuals without scores, setting their CCI to 0
 #' 
-#' If some individuals have not diagnosis in the exposure window
+#' If some individuals have no diagnosis in the exposure window
 #' they will get exluded from the calculation. This function adds
 #' them back setting their score to 0. 
 #' 
-#' @param icd_data A data.frame with at least columns `ID`, the original
+#' @param code_data A data.frame with at least columns `ID`, the original
 #'                   data.
 #' @param score_data A data.frame with at least columsn `ID`, and `SCORE`.
 #' 

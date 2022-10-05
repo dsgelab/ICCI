@@ -4,10 +4,10 @@
 \alias{add_back_missing_indvs}
 \title{Adds individuals without scores, setting their CCI to 0}
 \usage{
-add_back_missing_indvs(icd_data, score_data)
+add_back_missing_indvs(code_data, score_data)
 }
 \arguments{
-\item{icd_data}{A data.frame with at least columns \code{ID}, the original
+\item{code_data}{A data.frame with at least columns \code{ID}, the original
 data.}
 
 \item{score_data}{A data.frame with at least columsn \code{ID}, and \code{SCORE}.}
@@ -16,7 +16,7 @@ data.}
 A data.frame with all individuals
 }
 \description{
-If some individuals have not diagnosis in the exposure window
+If some individuals have no diagnosis in the exposure window
 they will get exluded from the calculation. This function adds
 them back setting their score to 0.
 }
