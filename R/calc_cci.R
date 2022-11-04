@@ -23,7 +23,8 @@
 #' @author Kira E. Detrois
 calc_cci <- function(icd_data,
                      exp_start=NULL,
-                     exp_end=NULL) {
+                     exp_end=NULL,
+                     score_type="charlson") {
     process_icd_data <- preprocess_icd_data(icd_data, exp_start, exp_end)
     if(nrow(process_icd_data) > 0) {
         group_icd_data <- group_icd_data_by_ver(process_icd_data)
@@ -34,7 +35,8 @@ calc_cci <- function(icd_data,
             curnt_icd_data <- get_group_icd_data(group_icd_data, 
                                                  icd_version)
             curnt_cci_scores <- calc_icd_ver_spec_ccis(curnt_icd_data, 
-                                                    icd_version)
+                                                       icd_version,
+                                                       score_type=score_type)
             all_cci_scores <- dplyr::bind_rows(all_cci_scores, 
                                                curnt_cci_scores)
         }

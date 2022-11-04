@@ -23,15 +23,16 @@
 #' 
 #' @author Kira E. Detrois
 calc_icd_ver_spec_ccis <- function(icd_data,
-                                   icd_version) {
+                                   icd_version,
+                                   score_type="charlson") {
     test_icd_ver_correct(icd_data)
     comorb_tbl <- comorbidity::comorbidity(icd_data,
                                            "ID_num",
                                            "primary_ICD",
-                                           map=get_comorb_icd_ver_str(icd_version),
+                                           map=get_comorb_icd_ver_str(icd_version, score_type),
                                            assign0=FALSE)
     cci_scores <- comorbidity::score(comorb_tbl,
-                                     weights = "charlson",
+                                     weights = ifelse(score_type == "charlson", "charlson", "vw"),
                                      assign0 = FALSE)
     cci_scores <- map_cci_scores_to_num_ids(cci_scores, icd_data$ID_num)
 

@@ -13,11 +13,23 @@
 #' @export
 #' 
 #' @author Kira E. Detrois
-get_comorb_icd_ver_str <- function(icd_version) {
+get_comorb_icd_ver_str <- function(icd_version,
+                                   score_type="charlson") {
     if (icd_version %in% c("10", "10CM")) {
-        return("charlson_icd10_quan")
+        if(score_type == "charlson")
+            return("charlson_icd10_quan")
+        else if(score_type == "elixhauser")
+            return("elixhauser_icd10_quan")
+        else 
+            message(paste0("Unknown Score type. ", score_type, " Possible values are: `charlson`, `elixhauser`."))
     } else if (icd_version %in% c("9", "9CM")) {
-        return("charlson_icd9_quan")
+        if(score_type == "charlson")
+            return("charlson_icd9_quan")
+        else if(score_type == "elixhauser")
+            return("elixhauser_icd9_quan")
+        else 
+            message(paste0("Unknown Score type. ", score_type, " Possible values are: `charlson`, `elixhauser`."))
+
     } else {
         message(paste0("Unknown ICD-version. ", icd_version, " Ignoring data."))
     }
