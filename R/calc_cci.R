@@ -12,6 +12,8 @@
 #' @param icd_data A data.frame with at least columns `ID`, and 
 #'                  `PRIMARY_ICD`.
 #' @inheritParams get_exposure_data
+#' @param score_type A character. Describes, whether to use the CCI
+#'                      or elixhauser comorbidity index (EI).
 #' 
 #' @return A tibble with columns `ID` and `score`.
 #'         Contains the charlson weighted comorbidity scores for each 
@@ -25,6 +27,8 @@ calc_cci <- function(icd_data,
                      exp_start=NULL,
                      exp_end=NULL,
                      score_type="charlson") {
+    if(!(score_type %in% c("charlson", "elixhauser")) )
+        warning("From ICCI::calc_cci. CCI score type ", score_type, " not known. Can be either `charlson`, or `elixhauser`")
     process_icd_data <- preprocess_icd_data(icd_data, exp_start, exp_end)
     if(nrow(process_icd_data) > 0) {
         group_icd_data <- group_icd_data_by_ver(process_icd_data)
@@ -49,6 +53,13 @@ calc_cci <- function(icd_data,
     } else {
         full_scores <- tibble::add_column(icd_data, SCORE=rep(0, nrow(icd_data)))
     }
-    full_scores <- dplyr::rename(full_scores, CCI=SCORE)
-    return(dplyr::select(full_scores, ID, CCI))
+    if(score_type == "charlson") {
+        full_scores <- dplyr::rename(full_scores, CCI=SCORE)
+        full_scores <- dplyr::select(full_scores, ID, CCI)
+    }
+    else {
+        full_scores <- dplyr::rename(full_scores, EI=SCORE)
+        full_scores <- dplyr::select(full_scores, ID, EI)
+    }
+    return(full_scores)
 }

@@ -4,7 +4,7 @@
 \alias{calc_cci}
 \title{Calculates the Charlson Comorbidity Index based on ICD-codes}
 \usage{
-calc_cci(icd_data, exp_start = NULL, exp_end = NULL)
+calc_cci(icd_data, exp_start = NULL, exp_end = NULL, score_type = "charlson")
 }
 \arguments{
 \item{icd_data}{A data.frame with at least columns \code{ID}, and
@@ -22,6 +22,9 @@ the number of rows in \code{icd_data}.}
 \item{exp_end}{A numeric, or a data.frame with at least columns
 \code{ID}, and \code{EXP_END}.
 End of the exposure period. See \code{exp_start} docu.}
+
+\item{score_type}{A character. Describes, whether to use the CCI
+or elixhauser comorbidity index (EI).}
 }
 \value{
 A tibble with columns \code{ID} and \code{score}.
