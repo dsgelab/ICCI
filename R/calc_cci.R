@@ -17,9 +17,8 @@
 #'                   Can be either `charlson`, or `elixhauser`.   
 #' 
 #' @return A tibble with columns `ID` and `CCI`, or `EI` depending on the 
-#'         `score_type` used.
-#'         Contains the charlson weighted comorbidity scores for each 
-#'         individual.
+#'         `score_type` used. Contains the charlson weighted comorbidity 
+#'          scores for each individual.
 #'
 #' @importFrom dplyr %>%
 #' @export
