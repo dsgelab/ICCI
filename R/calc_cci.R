@@ -13,9 +13,11 @@
 #'                  `PRIMARY_ICD`.
 #' @inheritParams get_exposure_data
 #' @param score_type A character. Describes, whether to use the CCI
-#'                      or elixhauser comorbidity index (EI).
+#'                   or elixhauser comorbidity index (EI).
+#'                   Can be either `charlson`, or `elixhauser`.   
 #' 
-#' @return A tibble with columns `ID` and `score`.
+#' @return A tibble with columns `ID` and `CCI`, or `EI` depending on the 
+#'         `score_type` used.
 #'         Contains the charlson weighted comorbidity scores for each 
 #'         individual.
 #'
