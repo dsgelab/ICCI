@@ -15,7 +15,8 @@ calc_icd_ver_spec_ccis(icd_data, icd_version, score_type = "charlson")
 Can be either "10", "10CM", "9", or "9CM".}
 
 \item{score_type}{A character. Describes, whether to use the CCI
-or elixhauser comorbidity index (EI).}
+or elixhauser comorbidity index (EI).
+Can be either \code{charlson}, or \code{elixhauser}.}
 }
 \value{
 A tibble with columns \code{ID} and \code{score}.

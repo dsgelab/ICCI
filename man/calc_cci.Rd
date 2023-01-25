@@ -24,10 +24,12 @@ the number of rows in \code{icd_data}.}
 End of the exposure period. See \code{exp_start} docu.}
 
 \item{score_type}{A character. Describes, whether to use the CCI
-or elixhauser comorbidity index (EI).}
+or elixhauser comorbidity index (EI).
+Can be either \code{charlson}, or \code{elixhauser}.}
 }
 \value{
-A tibble with columns \code{ID} and \code{score}.
+A tibble with columns \code{ID} and \code{CCI}, or \code{EI} depending on the
+\code{score_type} used.
 Contains the charlson weighted comorbidity scores for each
 individual.
 }
