@@ -27,7 +27,7 @@ You can install the development version of ICCI from [GitHub](https://github.com
 devtools::install_github("dsgelab/ICCI")
 ```
 
-In FinnGen you can find the package at `/finngen/green/kira/pckg_share/`. Or alternatively, compress the package and upload it through green uploads.
+In FinnGen you can find the package at `/finngen/green/kira/pckg_share/`. Or alternatively upload the package from this repository sit through green uploads.
 
 Then in the Sandbox use i.e.
 
