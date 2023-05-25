@@ -7,7 +7,7 @@
 group_icd_data_by_ver(long_data)
 }
 \arguments{
-\item{long_data}{A data.frame with at least column \code{ICD_version}.}
+\item{long_data}{A data.frame with at least column \code{ICD_VERSION}.}
 }
 \value{
 A list(\code{groups}, \code{group_keys}, \code{group_idxs}):

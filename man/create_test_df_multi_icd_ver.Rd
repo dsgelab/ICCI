@@ -23,7 +23,7 @@ The names of the individuals with ICD10 codes.}
 The names of the individuals with ICD9 codes.}
 }
 \value{
-A tibble with columns \code{ID}, \code{Event_age}, \code{primary_ICD},
+A tibble with columns \code{ID}, \code{EVENT_AGE}, \code{PRIMARY_ICD},
 and \code{secondary_ICD}. Filled with random ICD codes, and age at event.
 }
 \description{

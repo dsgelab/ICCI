@@ -36,11 +36,11 @@ calc_cci <- function(icd_data,
 
         # For adding up different ICD-version scores
         all_cci_scores <- tibble::tibble()
-        for (icd_version in as.character(group_icd_data$keys)) {
+        for (ICD_VERSION in as.character(group_icd_data$keys)) {
             curnt_icd_data <- get_group_icd_data(group_icd_data, 
-                                                 icd_version)
+                                                 ICD_VERSION)
             curnt_cci_scores <- calc_icd_ver_spec_ccis(curnt_icd_data, 
-                                                       icd_version,
+                                                       ICD_VERSION,
                                                        score_type=score_type)
             all_cci_scores <- dplyr::bind_rows(all_cci_scores, 
                                                curnt_cci_scores)

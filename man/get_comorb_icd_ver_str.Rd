@@ -4,10 +4,10 @@
 \alias{get_comorb_icd_ver_str}
 \title{Translates ICD-version descriptions}
 \usage{
-get_comorb_icd_ver_str(icd_version, score_type = "charlson")
+get_comorb_icd_ver_str(ICD_VERSION, score_type = "charlson")
 }
 \arguments{
-\item{icd_version}{The ICD-version in INTERVENE format.
+\item{ICD_VERSION}{The ICD-version in INTERVENE format.
 Can be either "10", "10CM", "9", or "9CM".}
 }
 \value{

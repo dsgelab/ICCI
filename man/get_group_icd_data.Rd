@@ -4,14 +4,14 @@
 \alias{get_group_icd_data}
 \title{Gets the data for the current ICD-version}
 \usage{
-get_group_icd_data(group_long_data, icd_version)
+get_group_icd_data(group_long_data, ICD_VERSION)
 }
 \arguments{
 \item{group_long_data}{A list. This should be created, using
 function
 \code{\link{group_icd_data_by_ver}}.}
 
-\item{icd_version}{The ICD-version in INTERVENE format.
+\item{ICD_VERSION}{The ICD-version in INTERVENE format.
 This should be "10", "10CM", "9", or "9CM".}
 }
 \value{
@@ -21,8 +21,8 @@ The data.frame with data for the chose ICD-version.
 Gets the entries of the data.frame for the selected ICD-version.
 }
 \examples{
-long_data <- tibble::tibble(ICD_version=c("10", "9", "10", "10CM"),
-                            primary_ICD=c("t1", "t2", "t3", "t4"))
+long_data <- tibble::tibble(ICD_VERSION=c("10", "9", "10", "10CM"),
+                            PRIMARY_ICD=c("t1", "t2", "t3", "t4"))
 group_long_data <- group_icd_data_by_ver(long_data)
 get_group_icd_data(group_long_data, "10")
 

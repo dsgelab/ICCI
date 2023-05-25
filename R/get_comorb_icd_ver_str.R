@@ -4,7 +4,7 @@
 #' from an INTERVENE longitudinal file into strings understandable
 #' by the function \code{\link[comorbidity]{comorbidity}}.
 #'
-#' @param icd_version The ICD-version in INTERVENE format.
+#' @param ICD_VERSION The ICD-version in INTERVENE format.
 #'                    Can be either "10", "10CM", "9", or "9CM".
 #'
 #' @return A string. Either "charlson_icd10_quan", or 
@@ -13,16 +13,16 @@
 #' @export
 #' 
 #' @author Kira E. Detrois
-get_comorb_icd_ver_str <- function(icd_version,
+get_comorb_icd_ver_str <- function(ICD_VERSION,
                                    score_type="charlson") {
-    if (icd_version %in% c("10", "10CM")) {
+    if (ICD_VERSION %in% c("10", "10CM")) {
         if(score_type == "charlson")
             return("charlson_icd10_quan")
         else if(score_type == "elixhauser")
             return("elixhauser_icd10_quan")
         else 
             message(paste0("Unknown Score type. ", score_type, " Possible values are: `charlson`, `elixhauser`."))
-    } else if (icd_version %in% c("9", "9CM")) {
+    } else if (ICD_VERSION %in% c("9", "9CM")) {
         if(score_type == "charlson")
             return("charlson_icd9_quan")
         else if(score_type == "elixhauser")
@@ -31,6 +31,6 @@ get_comorb_icd_ver_str <- function(icd_version,
             message(paste0("Unknown Score type. ", score_type, " Possible values are: `charlson`, `elixhauser`."))
 
     } else {
-        message(paste0("Unknown ICD-version. ", icd_version, " Ignoring data."))
+        message(paste0("Unknown ICD-version. ", ICD_VERSION, " Ignoring data."))
     }
 }

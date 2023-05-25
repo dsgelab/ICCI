@@ -7,7 +7,7 @@
 filter_out_wrong_icd_vers(icd_data)
 }
 \arguments{
-\item{icd_data}{A data.frame with at least column \code{ICD_version}.}
+\item{icd_data}{A data.frame with at least column \code{ICD_VERSION}.}
 }
 \value{
 The data without rows with ICD-version entries other than "9", "9CM",

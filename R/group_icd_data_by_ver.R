@@ -3,7 +3,7 @@
 #' Groups the data.frame according to the ICD-versions, using
 #' function \code{\link[dplyr]{group_by}}.
 #'
-#' @param long_data A data.frame with at least column `ICD_version`.
+#' @param long_data A data.frame with at least column `ICD_VERSION`.
 #'
 #' @return A list(`groups`, `group_keys`, `group_idxs`): 
 #'         \itemize{
@@ -19,10 +19,10 @@
 #' @export
 group_icd_data_by_ver <- function(long_data) {
     groups <- long_data %>%
-                dplyr::group_by(ICD_version, .drop=FALSE)
+                dplyr::group_by(ICD_VERSION, .drop=FALSE)
     group_keys <-  groups %>%
                     dplyr::group_keys() %>%
-                    dplyr::pull(ICD_version)
+                    dplyr::pull(ICD_VERSION)
     group_idxs <- groups %>%
                     dplyr::group_rows()
     names(group_idxs) <- group_keys

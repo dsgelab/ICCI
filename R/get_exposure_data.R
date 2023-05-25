@@ -3,7 +3,7 @@
 #' Subsets the data.frame to only include the entries from individuals
 #' inside the exposure period. By default gets all data from the 
 #' data.frame. The exposure has to be given as age. In this case the
-#' data.frame also needs to have a column `Event_age`.
+#' data.frame also needs to have a column `EVENT_AGE`.
 #' 
 #' If either or both `exp_start` and `exp_end` are provided restricts
 #' the entries to the exposure period for each individual.
@@ -15,7 +15,7 @@
 #'                  Start of the exposure period. Can be used to restrict 
 #'                  the timeframe on which the index should be calculated. 
 #'                  In this case the `icd_data` data.frame needs column 
-#'                  `Event_age`. 
+#'                  `EVENT_AGE`. 
 #'                  If the numeric is a vector has to have the length of
 #'                  the number of rows in `icd_data`.
 #' @param exp_end A numeric, or a data.frame with at least columns
@@ -29,7 +29,7 @@ get_exposure_data <- function(long_data,
                               exp_start=NULL,
                               exp_end=NULL) {
     if(!is.null(exp_start) | !is.null(exp_end)) {
-        assertthat::assert_that("Event_age" %in% colnames(long_data))
+        assertthat::assert_that("EVENT_AGE" %in% colnames(long_data))
         # Replacing any missing with values outside human life-spans
         if(is.null(exp_end)) {
             exp_end = 200 # Change this in case super humans exist
@@ -54,8 +54,8 @@ get_exposure_data <- function(long_data,
             long_data <- dplyr::inner_join(exp_start, long_data, by="ID")
         }
         long_data <- dplyr::filter(long_data, 
-                                    Event_age >= EXP_START & 
-                                    Event_age <= EXP_END) %>%
+                                    EVENT_AGE >= EXP_START & 
+                                    EVENT_AGE <= EXP_END) %>%
                      dplyr::select(-EXP_END, -EXP_START)
     }
 

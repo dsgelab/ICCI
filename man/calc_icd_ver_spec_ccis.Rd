@@ -5,13 +5,13 @@
 \title{Calculates the Charlson Comorbidity Index for a specific
 ICD-version}
 \usage{
-calc_icd_ver_spec_ccis(icd_data, icd_version, score_type = "charlson")
+calc_icd_ver_spec_ccis(icd_data, ICD_VERSION, score_type = "charlson")
 }
 \arguments{
 \item{icd_data}{A data.frame with at least columns \code{ID}, and
 \code{PRIMARY_ICD}.}
 
-\item{icd_version}{The ICD-version in INTERVENE format.
+\item{ICD_VERSION}{The ICD-version in INTERVENE format.
 Can be either "10", "10CM", "9", or "9CM".}
 
 \item{score_type}{A character. Describes, whether to use the CCI

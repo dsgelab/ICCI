@@ -15,7 +15,7 @@ calc_cci(icd_data, exp_start = NULL, exp_end = NULL, score_type = "charlson")
 Start of the exposure period. Can be used to restrict
 the timeframe on which the index should be calculated.
 In this case the \code{icd_data} data.frame needs column
-\code{Event_age}.
+\code{EVENT_AGE}.
 If the numeric is a vector has to have the length of
 the number of rows in \code{icd_data}.}
 
@@ -29,9 +29,8 @@ Can be either \code{charlson}, or \code{elixhauser}.}
 }
 \value{
 A tibble with columns \code{ID} and \code{CCI}, or \code{EI} depending on the
-\code{score_type} used.
-Contains the charlson weighted comorbidity scores for each
-individual.
+\code{score_type} used. Contains the charlson weighted comorbidity
+scores for each individual.
 }
 \description{
 Maps the ICD-codes onto the relevant conditions for the

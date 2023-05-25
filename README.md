@@ -4,10 +4,10 @@
 <!-- badges: end -->
 
 - This is an R package that calculates the Charlson Comorbidity Index (CCI) on longitudinal ICD data, using the R package `comorbidity`. 
-    - The data should have at least the columns `ID` and `primary_ICD`, and `ICD_version`.
-    - If you want to restrict the exposure period to calculate the index on, the data needs an additional column `Event_age`.
+    - The data should have at least the columns `ID` and `PRIMARY_ICD`, and `ICD_VERSION`.
+    - If you want to restrict the exposure period to calculate the index on, the data needs an additional column `EVENT_AGE`.
 - The package can handle different ICD-versions for the same individual.
-    - Possible entries for the column `ICD_version` are "10", "10CM", "9", or "9CM".
+    - Possible entries for the column `ICD_VERSION` are "10", "10CM", "9", or "9CM".
 - Can also be used to calculate a medication score for data with ATC codes and associated weights.
 
 ### R package Dependencies
@@ -64,10 +64,10 @@ original data with the  different exposure periods. This is the ideal option if 
 
 ```{r example}
 mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001", 
-                            Event_age=c(12.3, 89, 23.4), 
-                            primary_ICD=c("Y728", "M797", "E283"), 
+                            EVENT_AGE=c(12.3, 89, 23.4), 
+                            PRIMARY_ICD=c("Y728", "M797", "E283"), 
                             secondary_ICD=c(NA, NA, NA), 
-                            ICD_version=c("10", "10", "10"),
+                            ICD_VERSION=c("10", "10", "10"),
                             Exp_start=c(10, 40, 10),
                             Exp_end=c(50, 70, 50))
 ICCI::calc_cci(icd_data=mock_data,
@@ -79,10 +79,10 @@ ICCI::calc_cci(icd_data=mock_data,
 
 ```{r example}
 mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001", 
-                            Event_age=c(12.3, 89, 23.4), 
-                            primary_ICD=c("Y728", "M797", "E283"), 
+                            EVENT_AGE=c(12.3, 89, 23.4), 
+                            PRIMARY_ICD=c("Y728", "M797", "E283"), 
                             secondary_ICD=c(NA, NA, NA), 
-                            ICD_version=c("10", "10", "10"))
+                            ICD_VERSION=c("10", "10", "10"))
 Exp_start <- tibble::tibble(ID=c("KT0000001", "KT0000002"),
                             EXP_START=c(10, 40))
 Exp_end <- tibble::tibble(ID=c("KT0000001", "KT0000002"),

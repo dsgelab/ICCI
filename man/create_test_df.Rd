@@ -7,7 +7,7 @@
 create_test_df(
   indv_ids,
   n_samples,
-  icd_version = "ICD10_2011",
+  ICD_VERSION = "ICD10_2011",
   percent_sec_icd = 0.05
 )
 }
@@ -18,7 +18,7 @@ IDs of the individuals.}
 \item{n_samples}{An integer.
 Total number of samples to draw for the individuals}
 
-\item{icd_version}{The ICD version to draw the samples from.
+\item{ICD_VERSION}{The ICD version to draw the samples from.
 Can be either \code{ICD10_2009}, \code{ICD10_2011}, or
 \code{ICD9_2015}. The default is \code{ICD10_2011}.}
 
@@ -26,7 +26,7 @@ Can be either \code{ICD10_2009}, \code{ICD10_2011}, or
 to the records.}
 }
 \value{
-A tibble with columns \code{ID}, \code{Event_age}, \code{primary_ICD},
+A tibble with columns \code{ID}, \code{EVENT_AGE}, \code{PRIMARY_ICD},
 and \code{secondary_ICD}. Filled with random ICD codes, and age at event.
 }
 \description{

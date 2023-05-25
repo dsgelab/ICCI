@@ -15,7 +15,7 @@ preprocess_icd_data(icd_data, exp_start = NULL, exp_end = NULL)
 Start of the exposure period. Can be used to restrict
 the timeframe on which the index should be calculated.
 In this case the \code{icd_data} data.frame needs column
-\code{Event_age}.
+\code{EVENT_AGE}.
 If the numeric is a vector has to have the length of
 the number of rows in \code{icd_data}.}
 
