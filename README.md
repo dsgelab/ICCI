@@ -27,21 +27,28 @@ You can install the development version of ICCI from [GitHub](https://github.com
 devtools::install_github("dsgelab/ICCI")
 ```
 
-In FinnGen you can find the package at `/finngen/green/kira/pckg_share/`. Or alternatively upload the package from this repository sit through green uploads.
+In FinnGen you can find the `ICCI` and `comorbidity` packages at `/finngen/shared/icci_pckg_share/20241108_090028/files/detrois_share/packages` or alternatively upload the package from this repository through green uploads.
 
 Then in the Sandbox use i.e.
 
 ```{r example}
-install.packages("finngen/green/kira/pckg_share/ICCI_2.1.0.tar.xz",
-                 "/home/ivm/R/x86_64-pc-linux-gnu-library/4.1",
-                 repos = NULL, type="source")
+# In case the default R version is not the same as the one for which the package was build.
+rpkgs_path <- "/path/to/installed/rpackges/for/this/version/" i.e. /home/ivm/R/x86_64-pc-linux-gnu-library/4.4
+.libPaths(c(rpkgs_path, .libPaths()))  
+libpath <- .libPaths()[1]
+install.packages("/finngen/shared/icci_pckg_share/20241108_090028/files/detrois_share/packages/ICCI_2.3.1.tar.gz",
+                 rpkgs_path,
+                 repos = NULL, 
+                 type="source")
 ```
 
 Also see: [How to install a R package into Sandbox?](https://finngen.gitbook.io/finngen-analyst-handbook/working-in-the-sandbox/quirks-and-features/how-to-upload-to-your-own-ivm-via-finngen-green/my-r-package-doesnt-exist-in-finngen-sandbox-r-rstudio.-how-can-i-get-a-new-r-package-to-finngen). 
 
-Do the same for the [comorbidity](https://cran.r-project.org/web/packages/comorbidity/) package. In FinnGen you can find it at `/finngen/green/kira/pckg_share/comorbidity_1.0.3.tar.gz`.
+Do the same for the [comorbidity](https://cran.r-project.org/web/packages/comorbidity/) package. In FinnGen you can find it at `/finngen/shared/icci_pckg_share/20241108_090028/files/detrois_share/packages/comorbidity_1.1.0.tar.gz`.
 
 ## Example
+
+The data frame `icd_data` needs to contain the columns `EVENT_AGE`, `PRIMARY_ICD`, and `ICD_VERSION`.
 
 ```{r example}
 library(dplyr)
@@ -63,32 +70,31 @@ For variable exposure windows for different individuals there are two options:
 original data with the  different exposure periods. This is the ideal option if the start and end of the expsoure period are already part of the same data.frame as the ICD data.
 
 ```{r example}
-mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001", 
+mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001"), 
                             EVENT_AGE=c(12.3, 89, 23.4), 
                             PRIMARY_ICD=c("Y728", "M797", "E283"), 
-                            secondary_ICD=c(NA, NA, NA), 
                             ICD_VERSION=c("10", "10", "10"),
-                            Exp_start=c(10, 40, 10),
-                            Exp_end=c(50, 70, 50))
+                            EXP_START=c(10, 40, 10),
+                            EXP_END=c(50, 70, 50))
 ICCI::calc_cci(icd_data=mock_data,
-               exp_start=mock_data$Exp_start,
-               exp_end=mock_data$Exp_end)
+               exp_start=mock_data$EXP_START,
+               exp_end=mock_data$EXP_END)
 ```
 
 2. Give both `exp_start` and `exp_end`  a data.frame with each a column `ID`, and then `EXP_START` for the `exp_start` argument and `EXP_END`, for the `exp_end` argument. This way ensures that the exposures are mapped to the correct IDs. Thus, this is the better option if the information on the exposure window comes from another data source. 
 
 ```{r example}
-mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001", 
+mock_data <- tibble::tibble(ID=c("KT0000001", "KT0000002", "KT0000001"), 
                             EVENT_AGE=c(12.3, 89, 23.4), 
                             PRIMARY_ICD=c("Y728", "M797", "E283"), 
                             secondary_ICD=c(NA, NA, NA), 
                             ICD_VERSION=c("10", "10", "10"))
-Exp_start <- tibble::tibble(ID=c("KT0000001", "KT0000002"),
+EXP_START <- tibble::tibble(ID=c("KT0000001", "KT0000002"),
                             EXP_START=c(10, 40))
-Exp_end <- tibble::tibble(ID=c("KT0000001", "KT0000002"),
-                            EXP_START=c(50, 70))
+EXP_END <- tibble::tibble(ID=c("KT0000001", "KT0000002"),
+                          EXP_END=c(50, 70))
 
 ICCI::calc_cci(icd_data=mock_data,
-               exp_start=Exp_start,
-               exp_end=Exp_end)
+               exp_start=EXP_START,
+               exp_end=EXP_END)
 ```
